@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import {Crud} from '@nestjsx/crud';
 import {ProductService} from './product.service';
 import {ProductEntity} from './product.entity';
@@ -18,4 +18,9 @@ import {ProductEntity} from './product.entity';
 @Controller('product')
 export class ProductController {
     constructor(public service: ProductService) {}
+
+    @Get('getAll')
+    async findAll () {
+        return await this.service.findAll();
+    }
 }
